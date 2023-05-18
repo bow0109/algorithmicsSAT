@@ -39,6 +39,23 @@ route2.add_edge('11', '12', weight="206km")
 route2.add_edge('12', '13', weight="260km")
 route2.add_edge('13', '14', weight="137km")
 
+#Route 3 Graph
+route3.add_nodes_from(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15'])
+route3.add_edge('1', '2', weight="167km")
+route3.add_edge('2', '3', weight="90.8km")
+route3.add_edge('3', '4', weight="204km")
+route3.add_edge('4', '5', weight="106km")
+route3.add_edge('5', '6', weight="51km")
+route3.add_edge('6', '7', weight="197km")
+route3.add_edge('7', '8', weight="24.7km")
+route3.add_edge('8', '9', weight="157km")
+route3.add_edge('9', '10', weight="21.2km")
+route3.add_edge('10', '11', weight="112km")
+route3.add_edge('11', '12', weight="138km")
+route3.add_edge('12', '13', weight="135km")
+route3.add_edge('13', '14', weight="63.6km")
+route3.add_edge('14', '15', weight="235km")
+
 # Route 1 Locations
 route1_locations = {
     "stop1": {"type": "start", "location": (41.77440938029059, 140.78507681764697)},
@@ -76,11 +93,33 @@ route2_locations = {
     "stop14": {"type": "destination", "location": (42.62263700550108, 141.5711227222088)},
 }
 
+# Route 3 Locations
+route3_locations = {
+    "stop1": {"type": "start", "location": (43.3829011163888, 145.68960854617097)},
+    "stop2": {"type": "tourism", "location": (44.05538310065348, 145.10445388277242)},
+    "stop3": {"type": "charger", "location": (44.02325151045354, 144.26453974983298)},
+    "stop4": {"type": "charger", "location": (44.95100794874493, 142.57239824223024)},
+    "stop5": {"type": "tourism", "location": (45.388476536047136, 141.68902179548581)},
+    "stop6": {"type": "charger", "location": (45.01854018066196, 141.84846286052908)},
+    "stop7": {"type": "tourism", "location": (43.759663723798326, 142.3194412115509)},
+    "stop8": {"type": "charger", "location": (43.88890070001304, 142.45661275592872)},
+    "stop9": {"type": "tourism", "location": (43.0718992884027, 143.20712965809037)},
+    "stop10": {"type": "charger", "location": (42.92675803566175, 143.130262554084)},
+    "stop11": {"type": "tourism", "location": (42.2259095750241, 142.94922214316904)},
+    "stop12": {"type": "charger", "location": (42.70058414833465, 141.69556819383965)},
+    "stop13": {"type": "tourism", "location": (43.302519769016385, 140.60167280006087)},
+    "stop14": {"type": "charger", "location": (42.97895301531307, 140.51748018208957)},
+    "stop15": {"type": "destination", "location": (41.430559864570654, 140.10850738228697)}
+}
+
 print("Route 1 Locations")
 pprint.pprint(route1_locations, sort_dicts=False)
 
 print("Route 2 Locations")
 pprint.pprint(route2_locations, sort_dicts=False)
+
+print("Route 3 Locations")
+pprint.pprint(route3_locations, sort_dicts=False)
 
 #Display Route 1 Graph
 pos_route1 = nx.shell_layout(route1)
@@ -104,6 +143,15 @@ nx.draw_networkx_labels(route2, pos_route2, font_size=16, font_color='w')
 plt.title("Route 2")
 plt.show(block=False)
 
-
+#Display Route 3 Graph
+pos_route3 = nx.shell_layout(route3)
+plt.figure()
+nx.draw_networkx_nodes(route3, pos_route3, node_color='r', node_size=500)
+nx.draw_networkx_edges(route3, pos_route3, width=1.0, alpha=0.5, arrows=True, arrowsize=50, edge_color='k')
+labels_route3 = nx.get_edge_attributes(route3, 'weight')
+nx.draw_networkx_edge_labels(route3, pos_route3, edge_labels=labels_route3, font_size=12)
+nx.draw_networkx_labels(route3, pos_route3, font_size=16, font_color='w')
+plt.title("Route 3")
+plt.show(block=False)
 
 plt.show()
