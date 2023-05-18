@@ -124,8 +124,8 @@ cars = {
     "Lexus UX300E Sports Luxury": {"power": "150kW", "range": "350km", "energy consumption": "168Wh/km", "route": "3", "current pit-stop": "3", "kilometers travelled": "257.8km", "energy used": "43310Wh"}
 }
 
-input("Enter 1 to add a new competitor, 2 to remove a competitor, or 3 to display the current status of the race: ")
-if input == "1":
+modifycar = input("Enter 1 to add a new competitor, 2 to remove a competitor, or 3 to display the current status of the race: ")
+if modifycar == "1":
     car_name = input("Enter the name of the new competitor: ")
     power = input("Enter the power of the new competitor: ")
     range = input("Enter the range of the new competitor: ")
@@ -133,11 +133,11 @@ if input == "1":
     route = input("Enter the route of the new competitor: ")
     add_car(car_name, power, range, energy_consumption, route)
     print("New competitor added")
-elif input == "2":
+elif modifycar == "2":
     car_name = input("Enter the name of the competitor to remove: ")
     remove_car(car_name)
     print("Competitor removed")
-elif input == "3":
+elif modifycar == "3":
     pass
 
 print("Cars currently competing: ")
