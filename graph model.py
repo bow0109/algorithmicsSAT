@@ -2,6 +2,12 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import pprint
 
+def remove_car(car_name):
+    del cars[car_name]
+
+def add_car(car_name, power, range, energy_consumption, route):
+    cars[car_name] = {"power": power, "range": range, "energy consumption": energy_consumption, "route": route, "current pit-stop": "1", "kilometers travelled": "0", "energy used": "0"}
+
 route1 = nx.DiGraph()
 route2 = nx.DiGraph()
 route3 = nx.DiGraph()
@@ -110,6 +116,12 @@ route3_locations = {
     "stop13": {"type": "tourism", "location": (43.302519769016385, 140.60167280006087)},
     "stop14": {"type": "charger", "location": (42.97895301531307, 140.51748018208957)},
     "stop15": {"type": "destination", "location": (41.430559864570654, 140.10850738228697)}
+}
+
+cars = {
+    "Mercedes-Benz EQB 250": {"power": "140kW", "range": "507km", "energy consumption": "167Wh/km", "route": "1", "current pit-stop": "2", "kilometers travelled": "167km", "energy used": "27889Wh"},
+    "Volvo XC40": {"power": "150kW", "range": "460km", "energy consumption": "137Wh/km", "route": "2", "current pit-stop": "3", "kilometers travelled": "327.4km", "energy used": "448538Wh"},
+    "Lexus UX300E Sports Luxury": {"power": "150kW", "range": "350km", "energy consumption": "168Wh/km", "route": "3", "current pit-stop": "3", "kilometers travelled": "257.8km", "energy used": "43310Wh"}
 }
 
 print("Route 1 Locations")
