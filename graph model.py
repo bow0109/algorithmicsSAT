@@ -8,6 +8,35 @@ def remove_car(car_name):
 def add_car(car_name, power, range, energy_consumption, route):
     cars[car_name] = {"power": power, "range": range, "energy consumption": energy_consumption, "route": route, "current pit-stop": "1", "kilometers travelled": "0", "energy used": "0"}
 
+def update_energy():
+    pass
+
+def update_distance():
+    for car in cars:
+        current_node = cars[car]["current pit-stop"]
+        total_distance = 0.0  # Initialize total distance to 0
+        while current_node in route1:
+            neighbors = list(route1.neighbors(current_node))
+            if neighbors:
+                next_node = neighbors[0]
+                nx.path_weight()
+            else:
+                print(f"Car {car} has reached the end of Route 1.")
+                break
+        
+        if current_node not in route1:
+            print(f"Car {car} has reached the end of Route 1.")
+        
+        cars[car]["kilometers travelled"] = total_distance  # Update total traveled distance
+        
+        distance_traveled = cars[car]["kilometers travelled"]
+        print(f"Car {car} has traveled {distance_traveled} kilometers.")
+
+
+
+
+
+
 route1 = nx.DiGraph()
 
 # Route 1 Graph
@@ -78,45 +107,48 @@ route1_locations = {
 # Route 2 Locations
 route2_locations = {
     "stop1": {"type": "start", "location": (41.774390327578026, 140.78508485147051)},
-    "stop2": {"type": "tourism", "location": (43.156811399135655, 141.2062065733837)},
-    "stop3": {"type": "charger", "location": (43.21739700945421, 141.78573158768464)},
-    "stop4": {"type": "tourism", "location": (43.77050393346758, 142.3637405863841)},
-    "stop5": {"type": "tourism", "location": (43.49391714791271, 142.6123234417561)},
-    "stop6": {"type": "tourism", "location": (42.90053949205369, 143.18546024209422)},
-    "stop7": {"type": "charger", "location": (42.90254418161694, 143.17808576869092)},
-    "stop8": {"type": "charger", "location": (43.06267540105323, 144.82326717518012)},
-    "stop9": {"type": "charger", "location": (44.02016510863895, 144.2801531634622)},
-    "stop10": {"type": "charger", "location": (44.57755262340445, 142.9666853316712)},
-    "stop11": {"type": "tourism", "location": (45.12550159256372, 142.34621471223576)},
-    "stop12": {"type": "charger", "location": (43.59210550193761, 142.46394425627776)},
-    "stop13": {"type": "tourism", "location": (42.19246995981438, 142.8470418625022)},
-    "stop14": {"type": "destination", "location": (42.62263700550108, 141.5711227222088)},
+    "stop16": {"type": "tourism", "location": (43.156811399135655, 141.2062065733837)},
+    "stop17": {"type": "charger", "location": (43.21739700945421, 141.78573158768464)},
+    "stop18": {"type": "tourism", "location": (43.77050393346758, 142.3637405863841)},
+    "stop19": {"type": "tourism", "location": (43.49391714791271, 142.6123234417561)},
+    "stop20": {"type": "tourism", "location": (42.90053949205369, 143.18546024209422)},
+    "stop21": {"type": "charger", "location": (42.90254418161694, 143.17808576869092)},
+    "stop22": {"type": "charger", "location": (43.06267540105323, 144.82326717518012)},
+    "stop23": {"type": "charger", "location": (44.02016510863895, 144.2801531634622)},
+    "stop24": {"type": "charger", "location": (44.57755262340445, 142.9666853316712)},
+    "stop25": {"type": "tourism", "location": (45.12550159256372, 142.34621471223576)},
+    "stop26": {"type": "charger", "location": (43.59210550193761, 142.46394425627776)},
+    "stop27": {"type": "tourism", "location": (42.19246995981438, 142.8470418625022)},
+    "stop28": {"type": "destination", "location": (42.62263700550108, 141.5711227222088)},
 }
 
 # Route 3 Locations
 route3_locations = {
     "stop1": {"type": "start", "location": (43.3829011163888, 145.68960854617097)},
-    "stop2": {"type": "tourism", "location": (44.05538310065348, 145.10445388277242)},
-    "stop3": {"type": "charger", "location": (44.02325151045354, 144.26453974983298)},
-    "stop4": {"type": "charger", "location": (44.95100794874493, 142.57239824223024)},
-    "stop5": {"type": "tourism", "location": (45.388476536047136, 141.68902179548581)},
-    "stop6": {"type": "charger", "location": (45.01854018066196, 141.84846286052908)},
-    "stop7": {"type": "tourism", "location": (43.759663723798326, 142.3194412115509)},
-    "stop8": {"type": "charger", "location": (43.88890070001304, 142.45661275592872)},
-    "stop9": {"type": "tourism", "location": (43.0718992884027, 143.20712965809037)},
-    "stop10": {"type": "charger", "location": (42.92675803566175, 143.130262554084)},
-    "stop11": {"type": "tourism", "location": (42.2259095750241, 142.94922214316904)},
-    "stop12": {"type": "charger", "location": (42.70058414833465, 141.69556819383965)},
-    "stop13": {"type": "tourism", "location": (43.302519769016385, 140.60167280006087)},
-    "stop14": {"type": "charger", "location": (42.97895301531307, 140.51748018208957)},
-    "stop15": {"type": "destination", "location": (41.430559864570654, 140.10850738228697)}
+    "stop29": {"type": "tourism", "location": (44.05538310065348, 145.10445388277242)},
+    "stop30": {"type": "charger", "location": (44.02325151045354, 144.26453974983298)},
+    "stop31": {"type": "charger", "location": (44.95100794874493, 142.57239824223024)},
+    "stop32": {"type": "tourism", "location": (45.388476536047136, 141.68902179548581)},
+    "stop33": {"type": "charger", "location": (45.01854018066196, 141.84846286052908)},
+    "stop34": {"type": "tourism", "location": (43.759663723798326, 142.3194412115509)},
+    "stop35": {"type": "charger", "location": (43.88890070001304, 142.45661275592872)},
+    "stop36": {"type": "tourism", "location": (43.0718992884027, 143.20712965809037)},
+    "stop37": {"type": "charger", "location": (42.92675803566175, 143.130262554084)},
+    "stop38": {"type": "tourism", "location": (42.2259095750241, 142.94922214316904)},
+    "stop39": {"type": "charger", "location": (42.70058414833465, 141.69556819383965)},
+    "stop40": {"type": "tourism", "location": (43.302519769016385, 140.60167280006087)},
+    "stop41": {"type": "charger", "location": (42.97895301531307, 140.51748018208957)},
+    "stop42": {"type": "destination", "location": (41.430559864570654, 140.10850738228697)}
 }
 
 cars = {
-    "Mercedes-Benz EQB 250": {"power": "140kW", "range": "507km", "energy consumption": "167Wh/km", "route": "1", "current pit-stop": "2", "kilometers travelled": "167km", "energy used": "27889Wh"},
-    "Volvo XC40": {"power": "150kW", "range": "460km", "energy consumption": "137Wh/km", "route": "2", "current pit-stop": "3", "kilometers travelled": "327.4km", "energy used": "448538Wh"},
-    "Lexus UX300E Sports Luxury": {"power": "150kW", "range": "350km", "energy consumption": "168Wh/km", "route": "3", "current pit-stop": "3", "kilometers travelled": "257.8km", "energy used": "43310Wh"}
+    "Mercedes-Benz EQB 250": {"power": "140kW", "range": "507km", "energy consumption": "167", "route": "1", "current pit-stop": "2", "kilometers travelled": "", "energy used": "27889Wh"},
+    "Volvo XC40": {"power": "150kW", "range": "460km", "energy consumption": "137", "route": "2", "current pit-stop": "17", "kilometers travelled": "", "energy used": "448538Wh"},
+    "Lexus UX300E Sports Luxury": {"power": "150kW", "range": "350km", "energy consumption": "168", "route": "30", "current pit-stop": "30", "kilometers travelled": "", "energy used": "43310Wh"}
 }
+
+update_distance()
+
 
 modifycar = input("Enter 1 to add a new competitor, 2 to remove a competitor, or 3 to display the current status of the race: ")
 if modifycar == "1":
