@@ -14,12 +14,13 @@ def update_energy():
 def update_distance():
     for car in cars:
         current_node = cars[car]["current pit-stop"]
-        total_distance = 0.0  # Initialize total distance to 0
         while current_node in route1:
             neighbors = list(route1.neighbors(current_node))
             if neighbors:
                 next_node = neighbors[0]
-                nx.path_weight()
+                print(current_node)
+                path = nx.shortest_path(route1, 1, next_node, weight="weight")
+                total_distance = nx.path_weight(route1, path, weight="weight")
             else:
                 print(f"Car {car} has reached the end of Route 1.")
                 break
@@ -33,14 +34,10 @@ def update_distance():
         print(f"Car {car} has traveled {distance_traveled} kilometers.")
 
 
-
-
-
-
 route1 = nx.DiGraph()
 
 # Route 1 Graph
-route1.add_nodes_from(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44'])
+route1.add_nodes_from(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12','13','14','15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44'])
 route1.add_edge('1', '2', weight="276")
 route1.add_edge('2', '3', weight="48.7")
 route1.add_edge('3', '4', weight="0.3")
@@ -84,6 +81,11 @@ route1.add_edge('38', '39', weight="138")
 route1.add_edge('39', '40', weight="135")
 route1.add_edge('40', '41', weight="63.6")
 route1.add_edge('41', '42', weight="235")
+
+route1.add_edge('7','18', weight="122")
+route1.add_edge('18','7', weight="122")
+route1.add_edge('23','30', weight="1.8")
+route1.add_edge('30','23', weight="1.8")
 
 # Route 1 Locations
 route1_locations = {
@@ -147,7 +149,6 @@ cars = {
     "Lexus UX300E Sports Luxury": {"power": "150kW", "range": "350km", "energy consumption": "168", "route": "30", "current pit-stop": "30", "kilometers travelled": "", "energy used": "43310Wh"}
 }
 
-update_distance()
 
 
 modifycar = input("Enter 1 to add a new competitor, 2 to remove a competitor, or 3 to display the current status of the race: ")
